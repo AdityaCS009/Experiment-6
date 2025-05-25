@@ -5,12 +5,13 @@ pool:
   name: 'exp10' # Your self-hosted agent pool name
 
 steps:
+  # Step 1: Checkout the Code from GitHub
   - checkout: self
     displayName: 'Checkout Code from GitHub'
 
+  # Step 2: Build and Run Unit Tests
   - script: mvn clean test
     displayName: 'Build and Run Unit Tests'
-    workingDirectory: 'maven/myapp'
 
   # Step 3: Publish Test Results (JUnit)
   - task: PublishTestResults@2
